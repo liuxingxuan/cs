@@ -11,7 +11,7 @@ public interface UserService {
      *
      * @return
      */
-    List<Account> selectAll();
+    List<User> selectAll();
 
     User getById(int userid);
 }

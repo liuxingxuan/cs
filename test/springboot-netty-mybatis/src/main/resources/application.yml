@@ -11,9 +11,18 @@ spring:
       max-wait: 1234
       pool-prepared-statements: true
       max-pool-prepared-statement-per-connection-size: 5
+  rabbitmq:
+    host: 192.168.1.251
+    username: guest
+    password: guest
+    virtual-host: spring-boot-vhost
+
 #mybatis\u914D\u7F6E
 mybatis:
   mapper-locations: classpath:dao/*.xml
   type-aliases-package: com.example.demo.entity
 server:
   port: 9090
+
+
+
