@@ -1,36 +1,16 @@
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : 本地
-Source Server Version : 50717
-Source Host           : localhost:3306
-Source Database       : authority
-
-Target Server Type    : MYSQL
-Target Server Version : 50717
-File Encoding         : 65001
-
-Date: 2018-10-07 21:10:08
-*/
-
-SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for user
--- ----------------------------
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` char(20) DEFAULT NULL,
-  `password` char(20) DEFAULT NULL,
-  `age` int(10) DEFAULT NULL,
-  `birthday` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of user
--- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', 'admin', '10', '2017-05-30');
-INSERT INTO `user` VALUES ('2', 'teacher', 'teacher', '30', null);
-INSERT INTO `user` VALUES ('3', 'student', 'student', '20', null);
+  `UserID` int(11) NOT NULL,
+  `Score` bigint(20) NOT NULL DEFAULT '0' COMMENT '积分',
+  `Diamond` bigint(20) NOT NULL DEFAULT '0' COMMENT '钻石',
+  `Experience` bigint(20) NOT NULL DEFAULT '0' COMMENT '经验',
+  `InfullAmount` float(11,4) NOT NULL DEFAULT '0.0000' COMMENT '总充值',
+  `VIP` int(11) NOT NULL DEFAULT '0' COMMENT 'VIP',
+  `PlayScore` bigint(20) NOT NULL DEFAULT '0' COMMENT '总玩分',
+  `WinScore` bigint(20) NOT NULL DEFAULT '0' COMMENT '总赢分',
+  `PlayTime` bigint(20) NOT NULL DEFAULT '0' COMMENT '总玩时长',
+  `LockCannon` int(11) NOT NULL DEFAULT '1' COMMENT '解锁炮倍',
+  `GunStyle` int(11) NOT NULL DEFAULT '0' COMMENT '使用的炮皮肤',
+  `FaceStyle` int(11) NOT NULL DEFAULT '0' COMMENT '头像框',
+  `VipIntegral` int(11) NOT NULL DEFAULT '0' COMMENT 'VIP积分',
+  PRIMARY KEY (`UserID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
