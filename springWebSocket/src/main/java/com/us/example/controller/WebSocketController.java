@@ -1,7 +1,5 @@
 package com.us.example.controller;
 
-
-
 import com.us.example.bean.Message;
 import com.us.example.bean.Response;
 import com.us.example.service.WebSocketService;
@@ -24,7 +22,6 @@ public class WebSocketController {
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
 
-
     @RequestMapping(value = "/login")
     public String login(){
         return  "login";
@@ -44,7 +41,6 @@ public class WebSocketController {
         Thread.sleep(1000);
         return new Response("Welcome, " + message.getName() + "!");
     }
-
     //http://localhost:8080/Welcome1
     @RequestMapping("/Welcome1")
     @ResponseBody
@@ -65,7 +61,6 @@ public class WebSocketController {
         if (principal.getName().equals("admin")) {
             //通过convertAndSendToUser 向用户发送信息,
             // 第一个参数是接收消息的用户,第二个参数是浏览器订阅的地址,第三个参数是消息本身
-
             messagingTemplate.convertAndSendToUser("abel",
                     "/queue/notifications", principal.getName() + "-send:"
                             + message.getName());

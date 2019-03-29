@@ -18,9 +18,4 @@ public class UserController {
         User user = userService.getById(userid);
         return user;
     }
-
-    @PostMapping("/registy")
-    public void add(@RequestBody User user){
-
-    }
 }

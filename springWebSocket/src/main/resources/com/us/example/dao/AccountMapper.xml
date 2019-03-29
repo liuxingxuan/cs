@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gyc.dao.AccountMapper">
-    <resultMap id="BaseResultMap" type="com.gyc.entity.Account">
+<mapper namespace="com.us.example.dao.AccountMapper">
+    <resultMap id="BaseResultMap" type="com.us.example.bean.Account">
         <id column="UserID" jdbcType="INTEGER" property="userid"/>
         <result column="Account" jdbcType="VARCHAR" property="account"/>
         <result column="NickName" jdbcType="VARCHAR" property="nickname"/>
@@ -65,7 +65,7 @@
     delete from account
     where UserID = #{userid,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.gyc.entity.Account">
+    <insert id="insert" parameterType="com.us.example.bean.Account">
     insert into account (UserID, Account, NickName, 
       Password, FaceID, FacebookID, 
       WeiXinID, MobileNum, FaceUrl, 
@@ -85,7 +85,7 @@
       #{currentversion,jdbcType=VARCHAR}, #{usertype,jdbcType=TINYINT}, #{logontype,jdbcType=INTEGER}, 
       #{upgradeaccount,jdbcType=BIT})
   </insert>
-    <insert id="insertSelective" parameterType="com.gyc.entity.Account">
+    <insert id="insertSelective" parameterType="com.us.example.bean.Account">
         insert into account
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userid != null">
@@ -242,7 +242,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.gyc.entity.Account">
+    <update id="updateByPrimaryKeySelective" parameterType="com.us.example.bean.Account">
         update account
         <set>
             <if test="account != null">
@@ -320,7 +320,7 @@
         </set>
         where UserID = #{userid,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.gyc.entity.Account">
+    <update id="updateByPrimaryKey" parameterType="com.us.example.bean.Account">
     update account
     set Account = #{account,jdbcType=VARCHAR},
       NickName = #{nickname,jdbcType=VARCHAR},
