@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gyc.dao.AccountMapper">
+    <resultMap id="BaseResultMap" type="com.gyc.entity.Account">
+        <id column="UserID" jdbcType="INTEGER" property="userid"/>
+        <result column="Account" jdbcType="VARCHAR" property="account"/>
+        <result column="NickName" jdbcType="VARCHAR" property="nickname"/>
+        <result column="Password" jdbcType="VARCHAR" property="password"/>
+        <result column="FaceID" jdbcType="INTEGER" property="faceid"/>
+        <result column="FacebookID" jdbcType="VARCHAR" property="facebookid"/>
+        <result column="WeiXinID" jdbcType="VARCHAR" property="weixinid"/>
+        <result column="MobileNum" jdbcType="VARCHAR" property="mobilenum"/>
+        <result column="FaceUrl" jdbcType="VARCHAR" property="faceurl"/>
+        <result column="Sex" jdbcType="BIT" property="sex"/>
+        <result column="Country" jdbcType="VARCHAR" property="country"/>
+        <result column="RegisterTime" jdbcType="TIMESTAMP" property="registertime"/>
+        <result column="RegisterIP" jdbcType="VARCHAR" property="registerip"/>
+        <result column="version" jdbcType="VARCHAR" property="version"/>
+        <result column="platform" jdbcType="INTEGER" property="platform"/>
+        <result column="language" jdbcType="VARCHAR" property="language"/>
+        <result column="channel" jdbcType="INTEGER" property="channel"/>
+        <result column="MobileID" jdbcType="VARCHAR" property="mobileid"/>
+        <result column="ProtectPassword" jdbcType="VARCHAR" property="protectpassword"/>
+        <result column="IP" jdbcType="VARCHAR" property="ip"/>
+        <result column="LoginTime" jdbcType="TIMESTAMP" property="logintime"/>
+        <result column="CurrentVersion" jdbcType="VARCHAR" property="currentversion"/>
+        <result column="UserType" jdbcType="TINYINT" property="usertype"/>
+        <result column="logonType" jdbcType="INTEGER" property="logontype"/>
+        <result column="upgradeAccount" jdbcType="BIT" property="upgradeaccount"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    UserID, Account, NickName, Password, FaceID, FacebookID, WeiXinID, MobileNum, FaceUrl, 
+    Sex, Country, RegisterTime, RegisterIP, version, platform, language, channel, MobileID, 
+    ProtectPassword, IP, LoginTime, CurrentVersion, UserType, logonType, upgradeAccount
+  </sql>
+
+    <select id="getByAccount" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from account
+        where account = #{account}
+    </select>
+
+    <select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from account
+        where UserID = #{userid,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from account
+    </select>
+
+
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from account
+        where UserID = #{userid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from account
+    where UserID = #{userid,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.gyc.entity.Account">
+    insert into account (UserID, Account, NickName, 
+      Password, FaceID, FacebookID, 
+      WeiXinID, MobileNum, FaceUrl, 
+      Sex, Country, RegisterTime, 
+      RegisterIP, version, platform, 
+      language, channel, MobileID, 
+      ProtectPassword, IP, LoginTime, 
+      CurrentVersion, UserType, logonType, 
+      upgradeAccount)
+    values (#{userid,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{faceid,jdbcType=INTEGER}, #{facebookid,jdbcType=VARCHAR}, 
+      #{weixinid,jdbcType=VARCHAR}, #{mobilenum,jdbcType=VARCHAR}, #{faceurl,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=BIT}, #{country,jdbcType=VARCHAR}, #{registertime,jdbcType=TIMESTAMP}, 
+      #{registerip,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{platform,jdbcType=INTEGER}, 
+      #{language,jdbcType=VARCHAR}, #{channel,jdbcType=INTEGER}, #{mobileid,jdbcType=VARCHAR}, 
+      #{protectpassword,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{logintime,jdbcType=TIMESTAMP}, 
+      #{currentversion,jdbcType=VARCHAR}, #{usertype,jdbcType=TINYINT}, #{logontype,jdbcType=INTEGER}, 
+      #{upgradeaccount,jdbcType=BIT})
+  </insert>
+    <insert id="insertSelective" parameterType="com.gyc.entity.Account">
+        insert into account
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                UserID,
+            </if>
+            <if test="account != null">
+                Account,
+            </if>
+            <if test="nickname != null">
+                NickName,
+            </if>
+            <if test="password != null">
+                Password,
+            </if>
+            <if test="faceid != null">
+                FaceID,
+            </if>
+            <if test="facebookid != null">
+                FacebookID,
+            </if>
+            <if test="weixinid != null">
+                WeiXinID,
+            </if>
+            <if test="mobilenum != null">
+                MobileNum,
+            </if>
+            <if test="faceurl != null">
+                FaceUrl,
+            </if>
+            <if test="sex != null">
+                Sex,
+            </if>
+            <if test="country != null">
+                Country,
+            </if>
+            <if test="registertime != null">
+                RegisterTime,
+            </if>
+            <if test="registerip != null">
+                RegisterIP,
+            </if>
+            <if test="version != null">
+                version,
+            </if>
+            <if test="platform != null">
+                platform,
+            </if>
+            <if test="language != null">
+                language,
+            </if>
+            <if test="channel != null">
+                channel,
+            </if>
+            <if test="mobileid != null">
+                MobileID,
+            </if>
+            <if test="protectpassword != null">
+                ProtectPassword,
+            </if>
+            <if test="ip != null">
+                IP,
+            </if>
+            <if test="logintime != null">
+                LoginTime,
+            </if>
+            <if test="currentversion != null">
+                CurrentVersion,
+            </if>
+            <if test="usertype != null">
+                UserType,
+            </if>
+            <if test="logontype != null">
+                logonType,
+            </if>
+            <if test="upgradeaccount != null">
+                upgradeAccount,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="account != null">
+                #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="faceid != null">
+                #{faceid,jdbcType=INTEGER},
+            </if>
+            <if test="facebookid != null">
+                #{facebookid,jdbcType=VARCHAR},
+            </if>
+            <if test="weixinid != null">
+                #{weixinid,jdbcType=VARCHAR},
+            </if>
+            <if test="mobilenum != null">
+                #{mobilenum,jdbcType=VARCHAR},
+            </if>
+            <if test="faceurl != null">
+                #{faceurl,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=BIT},
+            </if>
+            <if test="country != null">
+                #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="registertime != null">
+                #{registertime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="registerip != null">
+                #{registerip,jdbcType=VARCHAR},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="language != null">
+                #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="channel != null">
+                #{channel,jdbcType=INTEGER},
+            </if>
+            <if test="mobileid != null">
+                #{mobileid,jdbcType=VARCHAR},
+            </if>
+            <if test="protectpassword != null">
+                #{protectpassword,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="logintime != null">
+                #{logintime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="currentversion != null">
+                #{currentversion,jdbcType=VARCHAR},
+            </if>
+            <if test="usertype != null">
+                #{usertype,jdbcType=TINYINT},
+            </if>
+            <if test="logontype != null">
+                #{logontype,jdbcType=INTEGER},
+            </if>
+            <if test="upgradeaccount != null">
+                #{upgradeaccount,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.gyc.entity.Account">
+        update account
+        <set>
+            <if test="account != null">
+                Account = #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                NickName = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                Password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="faceid != null">
+                FaceID = #{faceid,jdbcType=INTEGER},
+            </if>
+            <if test="facebookid != null">
+                FacebookID = #{facebookid,jdbcType=VARCHAR},
+            </if>
+            <if test="weixinid != null">
+                WeiXinID = #{weixinid,jdbcType=VARCHAR},
+            </if>
+            <if test="mobilenum != null">
+                MobileNum = #{mobilenum,jdbcType=VARCHAR},
+            </if>
+            <if test="faceurl != null">
+                FaceUrl = #{faceurl,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                Sex = #{sex,jdbcType=BIT},
+            </if>
+            <if test="country != null">
+                Country = #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="registertime != null">
+                RegisterTime = #{registertime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="registerip != null">
+                RegisterIP = #{registerip,jdbcType=VARCHAR},
+            </if>
+            <if test="version != null">
+                version = #{version,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                platform = #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="language != null">
+                language = #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="channel != null">
+                channel = #{channel,jdbcType=INTEGER},
+            </if>
+            <if test="mobileid != null">
+                MobileID = #{mobileid,jdbcType=VARCHAR},
+            </if>
+            <if test="protectpassword != null">
+                ProtectPassword = #{protectpassword,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                IP = #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="logintime != null">
+                LoginTime = #{logintime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="currentversion != null">
+                CurrentVersion = #{currentversion,jdbcType=VARCHAR},
+            </if>
+            <if test="usertype != null">
+                UserType = #{usertype,jdbcType=TINYINT},
+            </if>
+            <if test="logontype != null">
+                logonType = #{logontype,jdbcType=INTEGER},
+            </if>
+            <if test="upgradeaccount != null">
+                upgradeAccount = #{upgradeaccount,jdbcType=BIT},
+            </if>
+        </set>
+        where UserID = #{userid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.gyc.entity.Account">
+    update account
+    set Account = #{account,jdbcType=VARCHAR},
+      NickName = #{nickname,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      FaceID = #{faceid,jdbcType=INTEGER},
+      FacebookID = #{facebookid,jdbcType=VARCHAR},
+      WeiXinID = #{weixinid,jdbcType=VARCHAR},
+      MobileNum = #{mobilenum,jdbcType=VARCHAR},
+      FaceUrl = #{faceurl,jdbcType=VARCHAR},
+      Sex = #{sex,jdbcType=BIT},
+      Country = #{country,jdbcType=VARCHAR},
+      RegisterTime = #{registertime,jdbcType=TIMESTAMP},
+      RegisterIP = #{registerip,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=INTEGER},
+      language = #{language,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=INTEGER},
+      MobileID = #{mobileid,jdbcType=VARCHAR},
+      ProtectPassword = #{protectpassword,jdbcType=VARCHAR},
+      IP = #{ip,jdbcType=VARCHAR},
+      LoginTime = #{logintime,jdbcType=TIMESTAMP},
+      CurrentVersion = #{currentversion,jdbcType=VARCHAR},
+      UserType = #{usertype,jdbcType=TINYINT},
+      logonType = #{logontype,jdbcType=INTEGER},
+      upgradeAccount = #{upgradeaccount,jdbcType=BIT}
+    where UserID = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>
