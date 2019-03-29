@@ -1,5 +1,6 @@
 package com.gyc.service;
 
+import com.gyc.entity.Account;
 import com.gyc.entity.User;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface UserService {
      *
      * @return
      */
-    List<User> selectAll();
+    List<Account> selectAll();
 
     User getById(int userid);
 }

@@ -1,6 +1,8 @@
 package com.gyc.netty;
 
+import com.gyc.entity.Account;
 import com.gyc.entity.User;
+import com.gyc.service.AccountService;
 import com.gyc.service.UserService;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -17,7 +19,7 @@ import java.util.List;
 @Sharable
 public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Resource
-    private UserService userService;
+    private AccountService accountService;
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
@@ -34,8 +36,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         ByteBuf readMessage = (ByteBuf) msg;
         System.out.println(readMessage.toString(CharsetUtil.UTF_8));
-        List<User> users = userService.selectAll();
-        users.forEach(user -> System.out.println(user.toString()));
+        List<Account> accounts = accountService.selectAll();
+        accounts.forEach(user -> System.out.println(user.toString()));
     }
 
     @Override
